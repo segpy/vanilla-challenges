@@ -1,0 +1,302 @@
+:root {
+  /* Text styles */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  color: rgba(0, 0, 0, 0.747);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* Box styles */
+  color-scheme: light dark;
+  background-color: #242424;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  /* Text styles */
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  /* Display/position styles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Box styles */
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  padding: 1rem;
+  /* border: 1px solid red; */
+}
+
+h1 {
+  /* Text styles */
+  font-size: 1.5rem;
+  line-height: 1.1;
+
+  /* Display/position styles */
+  position: relative;
+
+  /* Box styles */
+  width: 100%;
+  /* border: 1px solid peru; */
+}
+
+.wrapper {
+  /* Box styles */
+  /* border: 1px solid red; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: white;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.wrapper-title {
+  /* Box styles */
+  padding: 1rem;
+  border-bottom: 1px solid rgb(207, 207, 207);
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.container {
+  /* Box styles */
+  /* border: 1px solid red; */
+  padding: 1rem;
+  /* width: 100%; */
+  /* max-width: 600px; */
+  /* padding: 0 20px; */
+
+}
+
+.input-container {
+  /* Display/position styles */
+  position: relative;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+
+  /* Box styles */
+  margin-bottom: 1rem;
+  /* border: 1px solid blue; */
+}
+
+.input-container input {
+  /* Text styles */
+  font-weight: bold;
+  font-size: 1rem;
+  color: #242424;
+
+  /* Box styles */
+  border: 2px solid rgb(175, 175, 175);
+  padding: 1rem;
+  width: 100%;
+  height: 2rem;
+  background-color: white;
+  /* line-height: 2rem; */
+}
+
+.input-container span {
+  /* Text styles */
+  color: grey;
+
+  /* Display/position styles */
+  position: absolute;
+  right: 3%;
+  top: 15%;
+
+  /* Box styles */
+  /* border: 1px solid coral; */
+  cursor: pointer;
+}
+
+
+
+.tooltip,
+.tooltip-clicked {
+  /* Display/position styles */
+  position: absolute;
+  display: grid;
+  place-content: center;
+
+  /* Box styles */
+  height: 25px;
+  background-color: #555;
+  border-radius: 5px;
+  padding: 0 10px;
+
+  /* Text styles */
+  font-size: 0.8rem;
+  color: white;
+
+  /* Change the position */
+  top: -60%;
+  left: 94%;
+  transform: translateX(-50%);
+
+  opacity: 0;
+}
+
+.tooltip::after,
+.tooltip-clicked::after {
+  /* Required content */
+  content: "";
+
+  /* Display/position styles */
+  position: absolute;
+
+  /* This properties create the tooltip triangle */
+  border-width: 6px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+
+  /* Change the position */
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  opacity: 1;
+}
+
+.tooltip:not(.tooltip-clicked)::before {
+  /* Styles for tooltip only */
+  content: "Copy";
+}
+
+.tooltip-clicked::before {
+  /* Styles for tooltip-clicked only */
+  content: "Copied!";
+}
+
+#copy-btn:hover~.tooltip,
+#copy-btn:hover~.tooltip-clicked {
+  opacity: 1;
+  transition: opacity .5s;
+}
+
+.pass-security {
+  background-color: white;
+  margin-top: 0.2rem;
+  height: 3px;
+}
+
+.low {
+  background-color: red;
+  width: 33%;
+  transition: background-color 1s ease-in-out;
+}
+
+.low:hover {
+  background-color: #535bf2;
+}
+
+.medium {
+  background-color: orange;
+  width: 66%;
+}
+
+.high {
+  background-color: green;
+  width: 100%;
+}
+
+.text-p {
+  /* Text styles */
+  color: black;
+  font-weight: 600;
+
+  /* Box styles */
+  margin-bottom: 0.5rem;
+}
+
+.pass-len {
+  /* border: 1px solid coral; */
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="range"] {
+  /* -webkit-appearance: none; */
+  width: 100%;
+  height: 2rem;
+  background: transparent;
+  accent-color: #646cff;
+  /* border: 1px solid red; */
+  /* margin: 10px 0; */
+}
+
+
+.checkbox-wrapper {
+  /* Display/position styles */
+  display: flex;
+  flex-wrap: wrap;
+
+  /* Box styles */
+  /* border: 1px solid cyan; */
+  width: 100%;
+  /* gap: 5rem; */
+}
+
+.checkbox-left {
+  /* Display/position styles */
+  /* flex: 1; */
+
+  /* Box styles */
+  /* border: 2px solid peru; */
+  width: 50%;
+  min-width: 150px;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+}
+
+.generate-btn {
+  /* Text styles */
+  text-transform: uppercase;
+  font-weight: bold;
+
+  /* Box styles */
+  /* border: 1px solid red; */
+  margin: 1rem 0;
+  width: 100%;
+  padding: 1rem;
+  background-color: #242424;
+  border-radius: 5px;
+  border: none;
+}
+
+.generate-btn:hover {
+  background-color: #535bf2;
+  color: white;
+}
+
+/* @media screen and (width < 400px) {
+  .checkbox-wrapper {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  .checkbox-left {
+    margin-bottom: 0.5rem;
+  }
+} */

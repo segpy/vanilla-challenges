@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="stylev2.css"> -->
+    <title>Vite App</title>
+  </head>
+  <body>
+    <main class="wrapper">
+
+      <!-- Title section -->
+      <section class="wrapper-title">
+        <h1>Pass Generator</h1>
+      </section>
+
+      <section class="container">  
+        <!-- Input section -->
+        <div class="input-container">
+          <input type="text" placeholder="Your password..." class="output-pass" disabled>
+          <!-- title="Copy" -->
+          <span
+           class="material-symbols-rounded" 
+           id="copy-btn" 
+           >copy_all
+          </span>
+          <div class="tooltip"></div>
+          <div class="pass-security low"></div>
+        </div>
+
+        <!-- Input range section -->
+        <div>
+          <p class="text-p pass-len">
+            Password Length <span class="range-value"></span>
+          </p>
+          <input class="range-btn" type="range" name="range-btn" id="range-btn" min="8" max="32" value="10" >
+        </div>
+
+        <!-- Password settings -->
+        <div>
+          <p class="text-p">
+            Pass Settings
+          </p>
+          <div class="checkbox-wrapper">
+            <div class="checkbox-left">
+              <label class="">
+                <input class="option" type="checkbox" name="lowerCase" checked>
+                Lowercase (a-z)
+              </label>
+            </div>
+            <div class="checkbox-left">
+              <label >
+                <input class="option" type="checkbox" name="upperCase">
+                Uppercase (A-Z)
+              </label>
+            </div>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <div class="checkbox-left">
+              <label class="">
+                <input class="option" type="checkbox" name="numbers">
+                Numbers (0-9)
+              </label>
+            </div>
+            <div class="checkbox-left">
+              <label >
+                <input class="option" type="checkbox" name="symbols">
+                Symbols (!@#)
+              </label>
+            </div>
+          </div>
+
+          <div class="checkbox-wrapper">
+            <div class="checkbox-left">
+              <label class="">
+                <input class="option" type="checkbox" name="exclude">
+                Exclude Duplicate
+              </label>
+            </div>
+            <div class="checkbox-left">
+              <label >
+                <input class="option" type="checkbox" name="include">
+                Include Spaces
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <input class="generate-btn" type="button" value="generate password">
+
+      </section>
+    </main>
+
+    <script src="./script-pass.js"></script>
+    <!-- <script src="./script.js"></script> -->
+    <!-- <script type="module" src="/main.js"></script> -->
+  </body>
+</html>
