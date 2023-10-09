@@ -270,6 +270,24 @@ input[type="range"] {
   margin-bottom: 0.5rem;
 }
 
+.disabled {
+  /* Text styles */
+  color: grey;
+}
+
+.error {
+  display: none;
+
+  /* Text styles */
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.error.show {
+  display: block;
+}
+
 .generate-btn {
   /* Text styles */
   text-transform: uppercase;

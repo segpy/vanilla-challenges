@@ -61,13 +61,13 @@
 
           <div class="checkbox-wrapper">
             <div class="checkbox-left">
-              <label class="">
+              <label class="option-label">
                 <input class="option" type="checkbox" name="numbers">
                 Numbers (0-9)
               </label>
             </div>
             <div class="checkbox-left">
-              <label >
+              <label class="option-label" >
                 <input class="option" type="checkbox" name="symbols">
                 Symbols (!@#)
               </label>
@@ -76,18 +76,20 @@
 
           <div class="checkbox-wrapper">
             <div class="checkbox-left">
-              <label class="">
+              <label class="option-label">
                 <input class="option" type="checkbox" name="exclude">
                 Exclude Duplicate
               </label>
             </div>
             <div class="checkbox-left">
-              <label >
+              <label class="option-label">
                 <input class="option" type="checkbox" name="include">
                 Include Spaces
               </label>
             </div>
           </div>
+
+          <p id="error-msg" class="error">Lowercase or Uppercase is required</p>
         </div>
 
         <input class="generate-btn" type="button" value="generate password">
