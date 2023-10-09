@@ -26,12 +26,20 @@ const userSecurityLevel = {
     MEDIUM: 22
 }
 
+const maxRange = {
+    ONE_OPTION: 26,
+    TWO_OPTIONS: 32
+}
+
 const mandatoryOptions = ['lowerCase', 'upperCase'];
 const otherOptions = ['numbers', 'symbols', 'exclude', 'include'];
 
 const handleOptions = () => {
+    handleMaxRange();
     passOptions.forEach(option => {
         option.addEventListener('click', () => {
+            handleMaxRange();
+            rangeValue.innerHTML = rangeBtn.value;
             generatePassword(rangeBtn.value);
         })
     })
@@ -119,6 +127,15 @@ const handleError = () => {
     else{
         disableOptions(false);
         return true;
+    }
+}
+
+const handleMaxRange = () => {
+    if(getMandatoryOptions().length <= 1){
+        rangeBtn.max = maxRange.ONE_OPTION;
+    }
+    else{
+        rangeBtn.max = maxRange.TWO_OPTIONS;
     }
 }
 
