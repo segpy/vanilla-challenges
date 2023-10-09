@@ -6,6 +6,8 @@ const rangeValue = document.querySelector('.range-value');
 const securityLevel = document.querySelector('.pass-security');
 const copyBtn = document.getElementById('copy-btn');
 const tooltip = document.querySelector('.tooltip');
+const optionLabels = document.querySelectorAll('.option-label');
+const errorMsg = document.getElementById('error-msg');
 
 const charSet = {
     lowerCase: 'abcdefghijklmnopqrstuvwxyz',
@@ -23,6 +25,9 @@ const userSecurityLevel = {
     LOW: 12,
     MEDIUM: 22
 }
+
+const mandatoryOptions = ['lowerCase', 'upperCase'];
+const otherOptions = ['numbers', 'symbols', 'exclude', 'include'];
 
 const handleOptions = () => {
     passOptions.forEach(option => {
@@ -73,10 +78,6 @@ const updateRangeValue = () => {
     })
 }
 
-const excludeDuplicates = (password) => {
-
-}
-
 const getRandomChar = (charSet) => {
     return charSet[Math.floor(Math.random() * charSet.length)];
 }
@@ -85,12 +86,57 @@ const getUserOptions = () => {
     return Array.from(passOptions).filter(option => option.checked).map(option => option.name);
 }
 
-// TODO: Fix bug where app is blocked when exclude duplicates is checked
+const getMandatoryOptions = () => {
+    return Array.from(passOptions).filter(option => option.checked && mandatoryOptions.includes(option.name)).map(option => option.name);
+}
+
+const disableOptions = (disable) => {
+    if(disable) {
+        outputPass.value = '';
+        errorMsg.classList.add('show')
+        optionLabels.forEach(label => {
+                label.classList.add('disabled')
+            })
+        passOptions.forEach(option => {
+            if(otherOptions.includes(option.name)) {
+                option.disabled = true;
+            }
+        })
+    } else {
+        errorMsg.classList.remove('show')
+        optionLabels.forEach(label => {
+            label.classList.remove('disabled')
+        })
+        passOptions.forEach(option => {
+            if(otherOptions.includes(option.name)) {
+                option.disabled = false;
+            }
+        })
+    }
+}
+
+const handleError = () => {
+    console.log(getMandatoryOptions());
+    if(getMandatoryOptions().length === 0) {
+        disableOptions(true);
+        return false;
+    }
+    else{
+        disableOptions(false);
+        return true;
+    }
+}
+
+
 const generatePassword = (length) => {
     let password = '';
     let selectedCharSet = getUserOptions().map(option => charSet[option]).join('');
     const excludeDuplicates = getUserOptions().includes(userOptions.EXCLUDE_DUPLICATES);
     const includeSpaces = getUserOptions().includes(userOptions.INCLUDE_SPACES);
+
+    if(!handleError()) {
+        return;
+    }
     
     if(!checkOptions()) {
         outputPass.value = '';
