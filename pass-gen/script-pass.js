@@ -90,6 +90,7 @@ const getUserOptions = () => {
     return Array.from(passOptions).filter(option => option.checked).map(option => option.name);
 }
 
+
 const getMandatoryOptions = () => {
     return Array.from(passOptions).filter(option => option.checked && mandatoryOptions.includes(option.name)).map(option => option.name);
 }
@@ -139,7 +140,6 @@ const handleMaxRange = () => {
     }
 }
 
-
 const generatePassword = (length) => {
     let password = '';
     let selectedCharSet = getUserOptions().map(option => charSet[option]).join('');
@@ -150,11 +150,13 @@ const generatePassword = (length) => {
         return;
     }
 
-    for(let i = 0; i < length; i++) {
+    for(let i = 0; i < length && selectedCharSet.length > 0; i++) {
         let newChar = getRandomChar(selectedCharSet);
         if (excludeDuplicates) {
-            while (password.includes(newChar)) {
+            let cycle = 0;
+            while (password.includes(newChar) && cycle < 5) {
                 newChar = getRandomChar(selectedCharSet);
+                cycle++;
             }
         }
         if (includeSpaces) {
