@@ -65,10 +65,6 @@ const handleSecurityLevel = (password) => {
     }
 }
 
-const checkOptions = () => {
-    return Array.from(passOptions).some(option => option.checked);
-}
-
 const updateRangeValue = () => {
     rangeValue.innerHTML = rangeBtn.value;
     rangeBtn.addEventListener('input', () => {
@@ -116,7 +112,6 @@ const disableOptions = (disable) => {
 }
 
 const handleError = () => {
-    console.log(getMandatoryOptions());
     if(getMandatoryOptions().length === 0) {
         disableOptions(true);
         return false;
@@ -135,11 +130,6 @@ const generatePassword = (length) => {
     const includeSpaces = getUserOptions().includes(userOptions.INCLUDE_SPACES);
 
     if(!handleError()) {
-        return;
-    }
-    
-    if(!checkOptions()) {
-        outputPass.value = '';
         return;
     }
 
